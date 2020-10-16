@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "CalculateS.h"
+#include "StringSplit.h"
 
 int main(int argc, char **argv)
 {
@@ -14,16 +15,22 @@ int main(int argc, char **argv)
 
 		std::string str;
 		std::ifstream file(argv[1]);
+		StringSplit array;
+		char** splited;
 
 		countOfTriangle = 0;
-		while(std::getline(file, str, '\n'))
+		while(std::getline(file, str))
 		{
-			found = str.rfind("facet normal");
-			if (found)
+			std::string key("facet normal");
+			std::size_t found = str.rfind(key);
+			if (found != std::string::npos)
 			{
+				splited = array.strsplit(str.c_str(), ' ');
+				std::cout << splited[2] << ' ' << splited[3] << ' ' << splited[4] << std::endl;
+
 				countOfTriangle += 1;
 			}
-			std::cout << str << ' ' << str.length() << ' ' << found << std::endl;
+			std::cout << str << ' ' << str.length() << std::endl;
 			str.clear();
 		}
 		std::cout << "COUNT OF TRIANGLE: " << countOfTriangle << '\n';

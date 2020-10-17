@@ -140,17 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalculateS.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="StringSplit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="text.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CalculateS.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="StringSplit.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="STL_Formatter.rc" />

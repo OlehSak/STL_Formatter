@@ -1,15 +1,9 @@
 #include "StringSplit.h"
 #include <stdlib.h>
 #include <cstring>
-
-StringSplit::StringSplit(void)
-{
-}
-
-StringSplit::StringSplit(StringSplit const& src)
-{
-	*this = src;
-}
+#include <fstream>
+#include <iostream>
+#include <string>
 
 size_t	StringSplit::get_count(char const* s, char c)
 {
@@ -83,19 +77,19 @@ char* StringSplit::get_word(char const** s, char c)
 	return (ret_str);
 }
 
-char** StringSplit::strsplit(char const* s, char c)
+std::string* StringSplit::strsplit(char const* s, char c)
 {
-	char** ret_arr;
-	char* str;
-	size_t	word_count;
-	size_t	i;
+	std::string*	ret_arr;
+	char*			str;
+	size_t			word_count;
+	size_t			i;
 
 	word_count = 0;
 	ret_arr = 0;
 	if (s && c >= 0)
 	{
 		word_count = get_count(s, c);
-		ret_arr = (char**)malloc(sizeof(char*) * (word_count + 1));
+		ret_arr = (std::string*)malloc(sizeof(std::string) * (word_count + 1));
 		if (ret_arr)
 		{
 			i = -1;
@@ -109,8 +103,4 @@ char** StringSplit::strsplit(char const* s, char c)
 		}
 	}
 	return (ret_arr);
-}
-
-StringSplit::~StringSplit()
-{
 }

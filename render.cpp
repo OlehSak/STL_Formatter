@@ -25,6 +25,7 @@ bool init() {
         std::cout << "Can't create renderer: " << SDL_GetError() << std::endl;
         ok = false;
     }
+
     return ok;
 }
 
@@ -35,7 +36,7 @@ void quit() {
     SDL_DestroyRenderer(ren);
     ren = NULL;
 
-    SDL_Quit;
+    SDL_Quit();
 }
 
 void drawVLine(int height, int start)
@@ -68,18 +69,20 @@ int render(std::vector<double> array_of_space, double maxSpace) {
         SDL_RenderDrawLine(ren, 20, 20, 20, 460);
         SDL_RenderDrawLine(ren, 20, 460, 620, 460);
 
-        SDL_RenderDrawLine(ren, 310, 460, 310, 465);
+        SDL_RenderDrawLine(ren, 40, 460, 40, 470);
+        SDL_RenderDrawLine(ren, 310, 460, 310, 470);
+        SDL_RenderDrawLine(ren, 580, 460, 580, 470);
+
 
         for (int i = 0; i <= 180; i++)
         {
-            drawVLine(round(array_of_space[i] * val), 39 + (i * 3));
+            drawVLine(round(array_of_space[180 - i] * val), 39 + (i * 3));
         }
-
 
         SDL_RenderPresent(ren);
 
         while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
+            if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
                 quit();
                 return 0;
             }

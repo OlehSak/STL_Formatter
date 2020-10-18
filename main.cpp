@@ -35,6 +35,9 @@ int main(int argc, char **argv)
 
 		sum = 0;
 		countOfTriangle = 0;
+
+		std::cout << "Loading..." << std::endl;
+
 		while(std::getline(file, str))
 		{
 			std::string key("facet normal");
@@ -42,7 +45,6 @@ int main(int argc, char **argv)
 			if (found != std::string::npos)
 			{
 				splited = split(str, ' ');
-				std::cout << "SPLITED FACET:" << splited.size() << ' ' << splited[4] << std::endl;
 
 				facet.at(0) = stod(splited[splited.size() - 3]);
 				facet.at(1) = stod(splited[splited.size() - 2]);
@@ -55,10 +57,9 @@ int main(int argc, char **argv)
 				if (round(angle) < min)
 					min = round(angle);
 
-				std::cout << "ANGLE in DEGREES:" << round(angle) << std::endl;
-
 				std::getline(file, str);
 				std::string key("outer loop");
+
 				found = str.rfind(key);
 				if (found != std::string::npos)
 				{
@@ -86,20 +87,12 @@ int main(int argc, char **argv)
 					vertex2.at(2) = stod(splited_arr[2][splited_arr[2].size() - 1]);
 
 					space = getSpace(vertex0, vertex1, vertex2);
-					//sum += space;
 					array_of_space[round(angle)] += space;
-					//std::cout << "SPACEEEEE: " << space << std::endl;
 				}
 				countOfTriangle += 1;
 			}
 			str.clear();
 		}
-		//std::cout << "MIN: " << min << std::endl;
-		//std::cout << "MAX: " << max << std::endl;
-		//std::cout << "SUM: " << sum << std::endl;
-
-		
-		//std::cout << "COUNT OF TRIANGLE: " << countOfTriangle << '\n';
 		file.close();
 
 		for (int i = 0; i <= 180; i++)
@@ -108,9 +101,12 @@ int main(int argc, char **argv)
 			{
 				if (maxSpace < array_of_space[i])
 					maxSpace = array_of_space[i];
-				std::cout << "degre " << (i - 90) << ": " << array_of_space[i] << std::endl;
 			}
 		}
+
+		std::cout << "Vertical axis, maximum space: " << maxSpace << std::endl;
+		std::cout << "Horizontal axis: -90; 0; 90 degrees" << std::endl;
+
 
 		if (render(array_of_space, maxSpace) == 1)
 		{

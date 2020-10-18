@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>box_1x1x1.stl</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>bunny.stl</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

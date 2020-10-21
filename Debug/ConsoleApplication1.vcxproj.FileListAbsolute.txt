@@ -4,3 +4,5 @@ C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\Debug\STL_Formatter.exe
 C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\Debug\STL_Formatter.pdb
 C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\Debug\STL_Formatter.exe
 C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\Debug\STL_Formatter.pdb
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter7\Debug\STL_Formatter.exe
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter7\Debug\STL_Formatter.pdb

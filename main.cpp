@@ -7,7 +7,6 @@ int main(int argc, char **argv)
 		std::cout << argv[1] << std::endl;
 
 		long int countOfTriangle;
-		std::size_t found;
 
 		std::string		str;
 		std::ifstream	file(argv[1]);
@@ -41,7 +40,7 @@ int main(int argc, char **argv)
 		while(std::getline(file, str))
 		{
 			std::string key("facet normal");
-			found = str.rfind(key);
+			auto found = str.rfind(key);
 			if (found != std::string::npos)
 			{
 				splited = split(str, ' ');
@@ -106,7 +105,6 @@ int main(int argc, char **argv)
 
 		std::cout << "Vertical axis, maximum space: " << maxSpace << std::endl;
 		std::cout << "Horizontal axis: -90; 0; 90 degrees" << std::endl;
-
 
 		if (render(array_of_space, maxSpace) == 1)
 		{

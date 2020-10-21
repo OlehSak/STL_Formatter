@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#include <SDL.h>
+#include "SDL2-2.0.12/include/SDL.h"
 
 std::vector<std::string> split(const std::string& s, char delimiter);
 double	vectorMultiple(double x1, double y1, double z1, double x2, double y2, double z2);

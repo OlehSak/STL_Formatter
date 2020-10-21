@@ -82,7 +82,7 @@ int render(std::vector<double> array_of_space, double maxSpace) {
         SDL_RenderPresent(ren);
 
         while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+            if (e.type == SDL_QUIT) {
                 quit();
                 return 0;
             }

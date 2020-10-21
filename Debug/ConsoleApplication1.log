@@ -1,9 +1,9 @@
 ﻿  Calculations.cpp
   main.cpp
-C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
   render.cpp
-C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
   split.cpp
   Создание кода...
-  LINK : не найден или не выполнена сборка C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\Debug\STL_Formatter.exe при последней инкрементной компоновке; выполняется полная компоновка
-  ConsoleApplication1.vcxproj -> C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\Debug\STL_Formatter.exe
+  LINK : не найден или не выполнена сборка C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\Debug\STL_Formatter.exe при последней инкрементной компоновке; выполняется полная компоновка
+  ConsoleApplication1.vcxproj -> C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\Debug\STL_Formatter.exe

@@ -1,0 +1,20 @@
+﻿  Calculations.cpp
+  main.cpp
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+  render.cpp
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  split.cpp
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_RenderClear.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_DestroyRenderer.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_Init.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_DestroyWindow.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_GetError.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_Quit.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_PollEvent.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_RenderDrawLine.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_CreateRenderer.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_RenderPresent.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_CreateWindow.
+render.obj : error LNK2001: неразрешенный внешний символ _SDL_SetRenderDrawColor.
+MSVCRT.lib(exe_main.obj) : error LNK2001: неразрешенный внешний символ _main.
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter5\Release\STL_Formatter.exe : fatal error LNK1120: неразрешенных внешних элементов: 13

@@ -1,0 +1,21 @@
+﻿  Calculations.cpp
+  main.cpp
+C:\Users\Shini\source\repos\STL_Formatter3\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+  render.cpp
+C:\Users\Shini\source\repos\STL_Formatter3\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  split.cpp
+  Создание кода...
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_GetError в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_CreateWindow в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_DestroyWindow в функции "void __cdecl quit(void)" (?quit@@YAXXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_PollEvent в функции "int __cdecl render(class std::vector<double,class std::allocator<double> >,double)" (?render@@YAHV?$vector@NV?$allocator@N@std@@@std@@N@Z).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_CreateRenderer в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_SetRenderDrawColor в функции "int __cdecl render(class std::vector<double,class std::allocator<double> >,double)" (?render@@YAHV?$vector@NV?$allocator@N@std@@@std@@N@Z).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_RenderClear в функции "int __cdecl render(class std::vector<double,class std::allocator<double> >,double)" (?render@@YAHV?$vector@NV?$allocator@N@std@@@std@@N@Z).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_RenderDrawLine в функции "void __cdecl drawVLine(int,int)" (?drawVLine@@YAXHH@Z).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_RenderPresent в функции "int __cdecl render(class std::vector<double,class std::allocator<double> >,double)" (?render@@YAHV?$vector@NV?$allocator@N@std@@@std@@N@Z).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_DestroyRenderer в функции "void __cdecl quit(void)" (?quit@@YAXXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_Init в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
+render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_Quit в функции "void __cdecl quit(void)" (?quit@@YAXXZ).
+MSVCRTD.lib(exe_main.obj) : error LNK2019: ссылка на неразрешенный внешний символ main в функции "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ).
+C:\Users\Shini\source\repos\STL_Formatter3\x64\Debug\STL_Formatter.exe : fatal error LNK1120: неразрешенных внешних элементов: 13

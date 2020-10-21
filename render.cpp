@@ -1,5 +1,4 @@
 #include "Header.h"
-#include <iostream>
 
 int SCREEN_WIDTH = 640;
 int SCREEN_HEIGHT = 480;

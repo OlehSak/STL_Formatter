@@ -1,26 +1,58 @@
 ﻿#include "Header.h"
 
-int main(int argc, char **argv)
+bool fileChecker(std::string input)
 {
-	if (argc > 1)
+	if (input.length() > 4)
 	{
-		std::cout << argv[1] << std::endl;
+		if (input[input.length() - 1] == 'l' &&
+			input[input.length() - 2] == 't' &&
+			input[input.length() - 3] == 's' &&
+			input[input.length() - 4] == '.')
+			return (true);
+	}
+	return false;
+}
+
+int main(int argc, char** argv)
+{
+	std::string input;
+	bool breaker = true;
+	std::ifstream	file(input);
+
+	while (breaker)
+	{
+		std::cout << "Type *.stl filename or 'close' for close:" << std::endl;
+		std::cin >> input;
+
+		std::ifstream	file(input);
+		if (input == "close")
+			return (0);
+		if (file.fail() || !fileChecker(input))
+		{
+			std::cout << "Wrong file or file not fount." << std::endl;
+		}
+		else
+			break;
+	}
+
+	if (input.length() > 0)
+	{
+		std::ifstream	file(input);
 
 		long int countOfTriangle;
 
 		std::string		str;
-		std::ifstream	file(argv[1]);
+
 		std::vector<std::string>	splited_arr[3];
 		std::vector<std::string>	splited;
 		double space;
 		double sum;
 		std::vector<double> facet;
-
 		std::vector<double> vertex0;
 		std::vector<double> vertex1;
 		std::vector<double> vertex2;
-
 		std::vector<double> array_of_space;
+
 
 		double min = 90;
 		double max = 0;
@@ -113,7 +145,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		std::cout << "not arguments" << std::endl;
+		return(1);
 	}
 	return (0);
 }

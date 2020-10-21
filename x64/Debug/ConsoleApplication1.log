@@ -1,8 +1,8 @@
 ﻿  Calculations.cpp
   main.cpp
-C:\Users\Shini\source\repos\STL_Formatter3\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\main.cpp(89,26): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
   render.cpp
-C:\Users\Shini\source\repos\STL_Formatter3\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\render.cpp(79,28): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
   split.cpp
   Создание кода...
 render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_GetError в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
@@ -18,4 +18,6 @@ render.obj : error LNK2019: ссылка на неразрешенный вне�
 render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_Init в функции "bool __cdecl init(void)" (?init@@YA_NXZ).
 render.obj : error LNK2019: ссылка на неразрешенный внешний символ SDL_Quit в функции "void __cdecl quit(void)" (?quit@@YAXXZ).
 MSVCRTD.lib(exe_main.obj) : error LNK2019: ссылка на неразрешенный внешний символ main в функции "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ).
-C:\Users\Shini\source\repos\STL_Formatter3\x64\Debug\STL_Formatter.exe : fatal error LNK1120: неразрешенных внешних элементов: 13
+SDL2-2.0.12\lib\x86\SDL2.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+SDL2-2.0.12\lib\x86\SDL2main.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Shini\source\repos\OlehSak\STL_Formatter4\x64\Debug\STL_Formatter.exe : fatal error LNK1120: неразрешенных внешних элементов: 13

@@ -1,14 +1,15 @@
 ﻿#include "Header.h"
 #include "Renderer.h"
+#include "Calculations.h"
 
 bool fileChecker(std::string input)
 {
 	if (input.length() > 4)
 	{
-		if (input[input.length() - 1] == 'l' &&
-			input[input.length() - 2] == 't' &&
-			input[input.length() - 3] == 's' &&
-			input[input.length() - 4] == '.')
+		if (input.at(input.length() - 1) == 'l' &&
+			input.at(input.length() - 2) == 't' &&
+			input.at(input.length() - 3) == 's' &&
+			input.at(input.length() - 4) == '.')
 			return (true);
 	}
 	return false;
@@ -38,6 +39,19 @@ std::string	initialize()
 	return (input);
 }
 
+std::vector<double>	getVertex(std::string str)
+{
+	std::vector<double> vertex;
+	vertex.resize(3);
+
+	auto splited = split(str, ' ');
+
+	vertex.at(0) = std::stod(splited.at(splited.size() - 3));
+	vertex.at(1) = std::stod(splited.at(splited.size() - 2));
+	vertex.at(2) = std::stod(splited.at(splited.size() - 1));
+	return (vertex);
+}
+
 int main(int argc, char** argv)
 {
 	std::string		input = initialize();
@@ -49,87 +63,56 @@ int main(int argc, char** argv)
 	}
 
 	std::string		str;
+	auto Calc = new Calculations();
 
-	std::vector<std::string>	splited_arr[3];
-	std::vector<std::string>	splited;
-	double sum;
-
-	double min = 90;
-	double max = 0;
 	double maxSpace = 0;
 
-	std::vector<double> array_of_space;
-	array_of_space.resize(181);
-
-	sum = 0;
+	std::vector<double> array_of_space (181);
 
 	std::cout << "Loading..." << std::endl;
 
 	while (std::getline(file, str))
 	{
-		std::string key("facet normal");
-		auto found = str.rfind(key);
+		auto found = str.find("facet normal");
+		int		iterator(0);
+
 		if (found != std::string::npos)
 		{
-			std::vector<double> facet;
-			facet.resize(3);
-
-			splited = split(str, ' ');
-
-			facet.at(0) = stod(splited[splited.size() - 3]);
-			facet.at(1) = stod(splited[splited.size() - 2]);
-			facet.at(2) = stod(splited[splited.size() - 1]);
-
-			double angle = angleCalculetion(facet[0], facet[1], facet[2], 0, 0, 1);
-
-			if (round(angle) > max)
-				max = round(angle);
-			if (round(angle) < min)
-				min = round(angle);
+			iterator++;
+			auto facet = getVertex(str);
+			auto angle = Calc->angleCalculetion(facet.at(0), facet.at(1), facet.at(2), 0, 0, -1);
 
 			std::getline(file, str);
-			std::string key("outer loop");
 
-			found = str.rfind(key);
+			found = str.rfind("outer loop");
+
 			if (found != std::string::npos)
 			{
-				double space;
+				iterator++;
 
-				std::vector<double> vertex0;
-				std::vector<double> vertex1;
-				std::vector<double> vertex2;
-				vertex0.resize(3);
-				vertex1.resize(3);
-				vertex2.resize(3);
+				std::getline(file, str, '\n');
+				auto vertex0 = getVertex(str);
+				iterator++;
 
-				std::string		str[3];
+				std::getline(file, str, '\n');
+				auto vertex1 = getVertex(str);
+				iterator++;
 
-				std::getline(file, str[0]);
-				splited_arr[0] = split(str[0], ' ');
+				std::getline(file, str, '\n');
+				auto vertex2 = getVertex(str);
+				iterator++;
 
-				vertex0.at(0) = std::stod(splited_arr[0][splited_arr[0].size() - 3]);
-				vertex0.at(1) = std::stod(splited_arr[0][splited_arr[0].size() - 2]);
-				vertex0.at(2) = std::stod(splited_arr[0][splited_arr[0].size() - 1]);
 
-				std::getline(file, str[1]);
-				splited_arr[1] = split(str[1], ' ');
-
-				vertex1.at(0) = std::stod(splited_arr[1][splited_arr[1].size() - 3]);
-				vertex1.at(1) = std::stod(splited_arr[1][splited_arr[1].size() - 2]);
-				vertex1.at(2) = std::stod(splited_arr[1][splited_arr[1].size() - 1]);
-
-				std::getline(file, str[2]);
-				splited_arr[2] = split(str[2], ' ');
-
-				vertex2.at(0) = std::stod(splited_arr[2][splited_arr[2].size() - 3]);
-				vertex2.at(1) = std::stod(splited_arr[2][splited_arr[2].size() - 2]);
-				vertex2.at(2) = std::stod(splited_arr[2][splited_arr[2].size() - 1]);
-
-				space = getSpace(vertex0, vertex1, vertex2);
-				array_of_space[round(angle)] += space;
+				double space = Calc->getSpace(vertex0, vertex1, vertex2);
+				array_of_space.at(round(angle)) += space;
 			}
+			iterator++;
 		}
-		str.clear();
+		if (iterator != 0 && iterator != 6)
+		{
+			std::cout << "Error in file" << std::endl;
+			return (1);
+		}
 	}
 	file.close();
 

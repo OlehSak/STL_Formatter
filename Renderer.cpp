@@ -72,9 +72,9 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
         SDL_RenderDrawLine(_ren, 310, 460, 310, 470);
         SDL_RenderDrawLine(_ren, 580, 460, 580, 470);
 
-        for (int i = 0; i <= 180; i++)
+        for (int i = 0; i < array_of_space.size(); i++)
         {
-            drawVLine(round(array_of_space[180 - i] * val), 39 + (i * 3));
+            drawVLine(round(array_of_space.at(i) * val), 39 + (i * 3));
         }
 
         SDL_RenderPresent(_ren);

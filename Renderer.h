@@ -12,13 +12,14 @@ private:
 	SDL_Window* _win;
 	SDL_Renderer* _ren;
 
+	bool	init();
+	void	quit();
+	void	drawVLine(int height, int start);
+
 public:
 	Renderer();
 	~Renderer();
 
-	bool	init();
-	void	quit();
-	void	drawVLine(int height, int start);
 	int		render(std::vector<double> array_of_space, double maxSpace);
 };
 

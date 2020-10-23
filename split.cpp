@@ -2,9 +2,10 @@
 
 std::vector<std::string> split(const std::string& s, char delimiter)
 {
-	std::vector<std::string> tokens;
-	std::string token;
-	std::istringstream tokenStream(s);
+	std::vector<std::string>	tokens;
+	std::string					token;
+	std::istringstream			tokenStream(s);
+
 	while (std::getline(tokenStream, token, delimiter))
 	{
 		if (token.length() > 0)

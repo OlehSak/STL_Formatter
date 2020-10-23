@@ -24,7 +24,7 @@
     <ClCompile Include="Calculations.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="render.cpp">
+    <ClCompile Include="Renderer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +33,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -84,27 +84,27 @@ int main(int argc, char** argv)
 
 			std::getline(file, str);
 
-			found = str.rfind("outer loop");
+			found = str.find("outer loop");
 
 			if (found != std::string::npos)
 			{
 				iterator++;
 
-				std::getline(file, str, '\n');
+				std::getline(file, str);
 				auto vertex0 = getVertex(str);
 				iterator++;
 
-				std::getline(file, str, '\n');
+				std::getline(file, str);
 				auto vertex1 = getVertex(str);
 				iterator++;
 
-				std::getline(file, str, '\n');
+				std::getline(file, str);
 				auto vertex2 = getVertex(str);
 				iterator++;
 
 
 				double space = Calc->getSpace(vertex0, vertex1, vertex2);
-				array_of_space.at(round(angle)) += space;
+				array_of_space.at((int)round(angle)) += space;
 			}
 			iterator++;
 		}

@@ -1,3 +1,2 @@
-﻿  main.cpp
-C:\Users\Shini\source\repos\OlehSak\STL_Formatter8\main.cpp(107,28): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+﻿  Renderer.cpp
   ConsoleApplication1.vcxproj -> C:\Users\Shini\source\repos\OlehSak\STL_Formatter8\Debug\STL_Formatter.exe

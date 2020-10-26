@@ -9,12 +9,17 @@ private:
 	int _width;
 	int _height;
 
-	SDL_Window* _win;
-	SDL_Renderer* _ren;
+	SDL_Window*		_win;
+	SDL_Renderer*	_ren;
+	TTF_Font*		_font;
+	SDL_Color		_color;
 
 	bool	init();
 	void	quit();
-	void	drawVLine(int height, int start);
+	void	drawVLine(int height, int start, int bottom);
+	void	draw_text(double value, int x, int y);
+
+
 
 public:
 	Renderer();

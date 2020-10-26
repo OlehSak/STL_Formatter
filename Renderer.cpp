@@ -1,14 +1,43 @@
 #include "Renderer.h"
+#include <string>
 
-Renderer::Renderer(void) : _width(640), _height(480), _win(NULL), _ren(NULL)
-{}
+Renderer::Renderer(void) :
+    _width(800),
+    _height(600),
+    _win(NULL),
+    _ren(NULL),
+    _font(NULL)
+{
+}
 
 Renderer::~Renderer(void)
-{}
+{
+}
 
-bool Renderer::init() {
+void    Renderer::draw_text(double value, int x, int y)
+{
+    SDL_Surface* surface = TTF_RenderText_Solid(_font,
+        std::to_string(value).c_str(), _color);
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(_ren, surface);
+
+    int texW = 0;
+    int texH = 0;
+    SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+    SDL_Rect dstrect = { x, y, texW, texH };
+
+    SDL_RenderCopy(_ren, texture, NULL, &dstrect);
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(surface);
+}
+
+bool    Renderer::init() {
+
+    SDL_Init(SDL_INIT_VIDEO);
+    TTF_Init();
+
     bool ok = true;
-
+    TTF_Init();
     if (SDL_Init(SDL_INIT_VIDEO) != 0 && TTF_Init() != 0) {
         std::cout << "Can't init SDL: " << SDL_GetError() << std::endl;
     }
@@ -24,6 +53,8 @@ bool Renderer::init() {
         std::cout << "Can't create renderer: " << SDL_GetError() << std::endl;
         ok = false;
     }
+    _color = { 255, 255, 255 };
+    _font = TTF_OpenFont("OpenSans-Regular.ttf", 14);
 
     return ok;
 }
@@ -35,13 +66,13 @@ void Renderer::quit() {
     SDL_DestroyRenderer(_ren);
     _ren = NULL;
 
+    TTF_CloseFont(_font);
+    TTF_Quit();
     SDL_Quit();
 }
 
-void Renderer::drawVLine(int height, int start)
+void Renderer::drawVLine(int height, int start, int bottom)
 {
-    int bottom = 460;
-
     SDL_RenderDrawLine(_ren, start, bottom, start, bottom - height);
     SDL_RenderDrawLine(_ren, start + 1, bottom, start + 1, bottom - height);
     SDL_RenderDrawLine(_ren, start + 2, bottom, start + 2, bottom - height);
@@ -59,34 +90,49 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
         return 1;
     }
 
+    int x, y;
+
+    x = 80;
+    y = 80;
+
+    SDL_SetRenderDrawColor(_ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(_ren);
+    SDL_SetRenderDrawColor(_ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
+
+    SDL_RenderDrawLine(_ren, x + 20, y + 20, x + 20, y + 460);
+    SDL_RenderDrawLine(_ren, x + 20, y + 460, x + 620, y + 460);
+
+    SDL_RenderDrawLine(_ren, x + 40, y + 460, x + 40, y + 470);
+    SDL_RenderDrawLine(_ren, x + 310, y + 460, x + 310, y + 470);
+    SDL_RenderDrawLine(_ren, x + 580, y + 460, x + 580, y + 470);
+
+    for (int i = 0; i < (int)array_of_space.size(); i++)
+    {
+        drawVLine((int)round(array_of_space.at(i) * val), x + 39 + (i * 3), y + 460);
+    }
+
+    draw_text(maxSpace, 0 + 35 + 3, 120);
+    draw_text(maxSpace/2, 0 + 35 + 3, (120 + 420/2));
+    draw_text(0, 0 + 35 + 3, 120 + 420);
+
+    draw_text(-90, x + 40 - 30, y + 475);
+    draw_text(0, x + 310 - 30, y + 475);
+    draw_text(90, x + 580 - 30, y + 475);
+
+
     while (run)
     {
-        SDL_SetRenderDrawColor(_ren, 0x00, 0x00, 0x00, 0x00);
-        SDL_RenderClear(_ren);
-        SDL_SetRenderDrawColor(_ren, 0xFF, 0xFF, 0xFF, 0xFF);
-
-        SDL_RenderDrawLine(_ren, 20, 20, 20, 460);
-        SDL_RenderDrawLine(_ren, 20, 460, 620, 460);
-
-        SDL_RenderDrawLine(_ren, 40, 460, 40, 470);
-        SDL_RenderDrawLine(_ren, 310, 460, 310, 470);
-        SDL_RenderDrawLine(_ren, 580, 460, 580, 470);
-
-        for (int i = 0; i < array_of_space.size(); i++)
-        {
-            drawVLine(round(array_of_space.at(i) * val), 39 + (i * 3));
-        }
-
-        SDL_RenderPresent(_ren);
-
         while (SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) {
+                run = false;
                 quit();
                 return 0;
             }
         }
-    }
 
+        SDL_RenderPresent(_ren);
+    }
+  
     quit();
     return 0;
 }

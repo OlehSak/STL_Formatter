@@ -17,7 +17,7 @@ private:
 	bool	init();
 	void	quit();
 	void	drawVLine(int height, int start, int bottom);
-	void	draw_text(double value, int x, int y);
+	void	draw_text(std::string string, int x, int y);
 
 public:
 	Renderer();

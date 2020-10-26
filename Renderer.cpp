@@ -15,10 +15,10 @@ Renderer::~Renderer(void)
 {
 }
 
-void    Renderer::draw_text(double value, int x, int y)
+void    Renderer::draw_text(std::string string, int x, int y)
 {
     SDL_Surface* surface = TTF_RenderText_Solid(_font,
-        std::to_string(value).c_str(), _color);
+        string.c_str(), _color);
 
     SDL_Texture* texture = SDL_CreateTextureFromSurface(_ren, surface);
 
@@ -103,6 +103,8 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
     SDL_RenderDrawLine(_ren, x + 20, y + 20, x + 20, y + 460);
     SDL_RenderDrawLine(_ren, x + 20, y + 460, x + 620, y + 460);
 
+    SDL_SetRenderDrawColor(_ren, 255, 0, 0, SDL_ALPHA_OPAQUE);
+
     SDL_RenderDrawLine(_ren, x + 40, y + 460, x + 40, y + 470);
     SDL_RenderDrawLine(_ren, x + 310, y + 460, x + 310, y + 470);
     SDL_RenderDrawLine(_ren, x + 580, y + 460, x + 580, y + 470);
@@ -112,14 +114,22 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
         drawVLine((int)round(array_of_space.at(i) * val), x + 39 + (i * 3), y + 460);
     }
 
-    draw_text(maxSpace, 0 + 35 + 3, 120);
-    draw_text(maxSpace/2, 0 + 35 + 3, (120 + 420/2));
-    draw_text(maxSpace / 4, 0 + 35 + 3, (120 + (420 - 420/4)));
-    draw_text(0, 0 + 35 + 3, 120 + 420);
+    draw_text("(MAX) " + std::to_string(maxSpace), 0, 120 + 14/2);
+    SDL_RenderDrawLine(_ren, x + 20, y + 460 - 400, x + 620, y + 460 - 400);
 
-    draw_text(-90, x + 40 - 30, y + 475);
-    draw_text(0, x + 310 - 30, y + 475);
-    draw_text(90, x + 580 - 30, y + 475);
+    draw_text(std::to_string(maxSpace / 2), 38, (120 + 420/2));
+    SDL_RenderDrawLine(_ren, x + 20, y + 460 - 400/2, x + 620, y + 460 - 400/2);
+
+    draw_text(std::to_string(maxSpace / 4), 38, (120 + (420 - 420/4)) - 14/2);
+    SDL_RenderDrawLine(_ren, x + 20, y + 460 - 400/4, x + 620, y + 460 - 400/4);
+
+    draw_text(std::to_string(0), 75, 120 + 420 - 14);
+
+    draw_text(std::to_string(-90), x + 40 - 30, y + 475);
+    draw_text(std::to_string(0), x + 310 - 30, y + 475);
+    draw_text(std::to_string(90), x + 580 - 30, y + 475);
+
+    SDL_RenderPresent(_ren);
 
     while (run)
     {
@@ -130,8 +140,6 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
                 return 0;
             }
         }
-
-        SDL_RenderPresent(_ren);
     }
   
     quit();

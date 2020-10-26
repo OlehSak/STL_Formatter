@@ -6,7 +6,8 @@ Renderer::Renderer(void) :
     _height(600),
     _win(NULL),
     _ren(NULL),
-    _font(NULL)
+    _font(NULL),
+    _color({ 255, 255, 255 })
 {
 }
 
@@ -113,12 +114,12 @@ int Renderer::render(std::vector<double> array_of_space, double maxSpace) {
 
     draw_text(maxSpace, 0 + 35 + 3, 120);
     draw_text(maxSpace/2, 0 + 35 + 3, (120 + 420/2));
+    draw_text(maxSpace / 4, 0 + 35 + 3, (120 + (420 - 420/4)));
     draw_text(0, 0 + 35 + 3, 120 + 420);
 
     draw_text(-90, x + 40 - 30, y + 475);
     draw_text(0, x + 310 - 30, y + 475);
     draw_text(90, x + 580 - 30, y + 475);
-
 
     while (run)
     {

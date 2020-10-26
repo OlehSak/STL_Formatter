@@ -19,8 +19,6 @@ private:
 	void	drawVLine(int height, int start, int bottom);
 	void	draw_text(double value, int x, int y);
 
-
-
 public:
 	Renderer();
 	~Renderer();
